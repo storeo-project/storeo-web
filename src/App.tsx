@@ -8,8 +8,8 @@ import { Routes } from 'react-router-dom'
 
 import routes from './routes'
 import { Route } from 'react-router'
-import RoutePublic from './modules/RoutePublic'
-import RoutePrivate from './modules/RoutePrivate'
+import RoutePublic from './components/routes/RoutePublic'
+import RoutePrivate from './components/routes/RoutePrivate'
 import NotFound from './pages/NotFound'
 
 const App: React.FC<RootProps> = ({ history }: { history: History }) => {
@@ -41,7 +41,7 @@ const App: React.FC<RootProps> = ({ history }: { history: History }) => {
               />
             )
           })}
-          <Route path="*" element={<NotFound />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </Container>
     </Router>
