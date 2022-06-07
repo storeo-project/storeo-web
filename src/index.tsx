@@ -11,6 +11,8 @@ import { getApolloClient } from 'apollo'
 import createI18n from './i18n/i18n'
 import reportWebVitals from './reportWebVitals'
 
+import './index.scss'
+
 async function bootStrap() {
 
   const client = await getApolloClient()
