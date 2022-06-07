@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Routes } from 'react-router-dom'
+import routes from './route'
+import { Route } from 'react-router'
+import RoutePublic from './component/route/RoutePublic'
+import RoutePrivate from './component/route/RoutePrivate'
+import NotFound from './pages/NotFound'
 
-function App() {
+const App: React.FC<any> = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Routes>
+        {routes.map(({ component, path, isPublic }) => {
+          return (
+            <Route
+              path={path}
+              key={path}
+              element={
+                isPublic ? (
+                  <RoutePublic isAuthenticated={false}>{component()}</RoutePublic>
+                ) : (
+                  <RoutePrivate isAuthenticated={false}>{component()}</RoutePrivate>
+                )
+              }
+            />
+          )
+        })}
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </Router>
+  )
 }
 
-export default App;
+export default App

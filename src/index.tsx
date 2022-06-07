@@ -1,19 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import 'react-app-polyfill/ie9'
+import 'react-app-polyfill/stable'
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { I18nextProvider } from 'react-i18next'
+import { ApolloProvider } from '@apollo/client'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+import App from './App'
+import { getApolloClient } from 'apollo'
+import createI18n from './i18n/i18n'
+import reportWebVitals from './reportWebVitals'
+
+async function bootStrap() {
+
+  const client = await getApolloClient()
+
+  const i18n = await createI18n()
+
+  const root = ReactDOM.createRoot(document.getElementById('root') as Element)
+
+  root.render(
+    <ApolloProvider client={client}>
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    </ApolloProvider>,
+  )
+
+  reportWebVitals()
+}
+
+bootStrap().then()
