@@ -17,9 +17,9 @@ const App: React.FC<any> = () => {
               key={path}
               element={
                 isPublic ? (
-                  <RoutePublic isAuthenticated={false}>{component()}</RoutePublic>
+                  <RoutePublic isAuthenticated={false}>{component}</RoutePublic>
                 ) : (
-                  <RoutePrivate isAuthenticated={false}>{component()}</RoutePrivate>
+                  <RoutePrivate isAuthenticated={false}>{component}</RoutePrivate>
                 )
               }
             />

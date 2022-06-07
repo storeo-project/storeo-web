@@ -1,15 +1,16 @@
+import React from 'react'
 import Login from 'pages/Login'
 import Top from 'pages/Top'
 
 export default [
   {
     path: '/',
-    component: Top,
+    component: <Top />,
     isPublic: true,
   },
   {
     path: '/login',
-    component: Login,
+    component: <Login />,
     isPublic: true,
   },
 ]
