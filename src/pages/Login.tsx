@@ -1,8 +1,13 @@
 import React from 'react'
+import Wrapper from '../component/Wrapper'
 
 const Login = () => {
   return (
-    <h1>Login</h1>
+    <Wrapper>
+      <h1>
+        Login
+      </h1>
+    </Wrapper>
   )
 }
 
