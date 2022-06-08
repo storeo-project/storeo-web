@@ -1,6 +1,6 @@
 import React from 'react'
-import Wrapper from '../component/Wrapper'
-import StyledButton from '../component/StyledButton'
+import Wrapper from '../components/Wrapper'
+import StyledButton from '../components/StyledButton'
 import { useKeycloak } from '../keycloak/web'
 
 const Top = () => {
