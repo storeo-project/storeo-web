@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-const Wrapper = styled.div.attrs({
-  className: 'font-bold',
-})`
+const Wrapper = styled.div`
   margin-top: 2rem;
 `
 
