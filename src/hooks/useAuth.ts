@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
-import useLocalStorage from './useLocalStorage'
 
 export default function useAuth() {
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(!!localStorage.getItem('token'))
   const [token, setToken] = useState(null)
-  const { storedValue } = useLocalStorage('token', '')
 
   useEffect(() => {
-    setIsAuth(!!storedValue)
-    setToken(storedValue)
+    const value = localStorage.getItem('token')
+    const storedValue = value ? JSON.parse(value) : {}
+    setIsAuth(!!storedValue.token)
+    setToken(storedValue.token)
   })
 
   return { isAuth, token }

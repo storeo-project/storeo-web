@@ -9,20 +9,16 @@ import { ReactKeycloakProvider } from 'keycloak/web'
 
 import App from './App'
 import { getApolloClient } from 'apollo'
+import { getKeycloakClient } from './keycloak'
+
 import createI18n from './i18n/i18n'
 import reportWebVitals from './reportWebVitals'
-
-import Keycloak from 'keycloak-js'
 
 import './assets/index.scss'
 
 async function bootStrap() {
 
-  const keycloak = new Keycloak({
-    url: 'http://10.0.6.175:8180',
-    realm: 'airtag',
-    clientId: 'airtag-web',
-  })
+  const keycloak = getKeycloakClient()
 
   const client = await getApolloClient()
 
@@ -36,7 +32,7 @@ async function bootStrap() {
       initOptions={{ onLoad: 'login-required' }}
       onTokens={
         (tokens) => {
-          console.log(tokens)
+          localStorage.setItem('token', JSON.stringify(tokens))
         }
       }>
       <ApolloProvider client={client}>
