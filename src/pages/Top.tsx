@@ -2,6 +2,7 @@ import React from 'react'
 import Wrapper from '../component/Wrapper'
 import styled from 'styled-components'
 import { Button } from 'semantic-ui-react'
+import { useKeycloak } from '../keycloak/web'
 
 const StyledButton = styled(Button)`
   &&& {
@@ -26,11 +27,23 @@ const StyledButton = styled(Button)`
 `
 
 const Top = () => {
+  const { keycloak } = useKeycloak()
+
+  const login = <StyledButton onClick={() => {
+    keycloak.login()
+  }}>
+    Login
+  </StyledButton>
+
+  const logout = <StyledButton onClick={() => {
+    keycloak.logout()
+  }}>
+    Logout
+  </StyledButton>
+
   return (
     <Wrapper>
-      <StyledButton>
-        Login
-      </StyledButton>
+      {keycloak.authenticated ? logout : login}
     </Wrapper>
   )
 }
