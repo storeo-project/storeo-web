@@ -1,6 +1,6 @@
 import { HttpLink } from '@apollo/client'
 
-const ssl = process.env.REACT_APP_GRAPHQL_SSL
+const ssl = JSON.parse(process.env.REACT_APP_GRAPHQL_SSL ? process.env.REACT_APP_GRAPHQL_SSL : 'false')
 const host = process.env.REACT_APP_GRAPHQL_HOST
 const port = process.env.REACT_APP_GRAPHQL_PORT
 const version = process.env.REACT_APP_GRAPHQL_VERSION
