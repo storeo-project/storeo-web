@@ -3,6 +3,7 @@ import Wrapper from '../component/Wrapper'
 import styled from 'styled-components'
 import { Button } from 'semantic-ui-react'
 import { useKeycloak } from '../keycloak/web'
+import useAuth from '../hooks/useAuth'
 
 const StyledButton = styled(Button)`
   &&& {
@@ -28,6 +29,7 @@ const StyledButton = styled(Button)`
 
 const Top = () => {
   const { keycloak } = useKeycloak()
+  const { isAuth } = useAuth()
 
   const login = <StyledButton onClick={() => {
     keycloak.login()
@@ -41,9 +43,11 @@ const Top = () => {
     Logout
   </StyledButton>
 
+  const button = isAuth ? logout : login
+
   return (
     <Wrapper>
-      {keycloak.authenticated ? logout : login}
+      {button}
     </Wrapper>
   )
 }

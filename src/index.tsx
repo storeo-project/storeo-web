@@ -31,7 +31,14 @@ async function bootStrap() {
   const root = ReactDOM.createRoot(document.getElementById('root') as Element)
 
   root.render(
-    <ReactKeycloakProvider authClient={keycloak}>
+    <ReactKeycloakProvider
+      authClient={keycloak}
+      initOptions={{ onLoad: 'login-required' }}
+      onTokens={
+        (tokens) => {
+          console.log(tokens)
+        }
+      }>
       <ApolloProvider client={client}>
         <I18nextProvider i18n={i18n}>
           <App />
