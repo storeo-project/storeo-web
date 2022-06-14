@@ -13,9 +13,9 @@ const Home: NextPage = () => {
         logout_openid_connect_provider: true,
       })}>Logout
       </button>
-      <h1>Hello WunderGraph! {user?.user_id}</h1>
-      {user?.user_id && hello.status === 'ok' && hello.data.findUsers.length > 0 && (
+      {user && hello.status === 'ok' && hello.data.findUsers.length > 0 && (
         <div>
+          <h1>Hello WunderGraph! {user.user_id}</h1>
           {hello.data.findUsers.map(message => {
             return (<div key={message.id}>
               <p>
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           })}
         </div>
       )}
-      {user?.user_id && hello.status === 'error' && (
+      {user && hello.status === 'error' && (
         <div>
           {hello.errors.map(value => {
             return (<div key={value.message}>
@@ -36,6 +36,9 @@ const Home: NextPage = () => {
             </div>)
           })}
         </div>
+      )}
+      {!user && (
+        <h1>Please login</h1>
       )}
     </div>
   )
