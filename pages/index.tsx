@@ -4,7 +4,7 @@ import { AuthProviders, useLiveQuery, useWunderGraph, withWunderGraph } from '..
 
 const Home: NextPage = () => {
   const { result: hello } = useLiveQuery.Hello()
-  const { login, logout } = useWunderGraph()
+  const { user, login, logout } = useWunderGraph()
 
   return (
     <div>
@@ -13,7 +13,8 @@ const Home: NextPage = () => {
         logout_openid_connect_provider: true,
       })}>Logout
       </button>
-      {hello.status === 'ok' && hello.data.findUsers.length > 0 && (
+      <h1>Hello WunderGraph! {user?.user_id}</h1>
+      {user?.user_id && hello.status === 'ok' && hello.data.findUsers.length > 0 && (
         <div>
           {hello.data.findUsers.map(message => {
             return (<div key={message.id}>
@@ -24,7 +25,7 @@ const Home: NextPage = () => {
           })}
         </div>
       )}
-      {hello.status === 'error' && (
+      {user?.user_id && hello.status === 'error' && (
         <div>
           {hello.errors.map(value => {
             return (<div key={value.message}>
