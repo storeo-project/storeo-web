@@ -1,10 +1,12 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import { AuthProviders, useLiveQuery, useWunderGraph, withWunderGraph } from '../components/generated/nextjs'
+import { AuthProviders, useMutation, useQuery, useWunderGraph, withWunderGraph } from '../components/generated/nextjs'
 
 const Home: NextPage = () => {
-  const { result: hello } = useLiveQuery.Hello()
   const { user, login, logout } = useWunderGraph()
+  const { result: me } = useQuery.me()
+  const { result: deleteResult, mutate: deleteOrganization } = useMutation.deleteOrganization()
+  const { result: createResult, mutate: createOrganization } = useMutation.updateOrganization()
 
   return (
     <div>
@@ -13,28 +15,34 @@ const Home: NextPage = () => {
         logout_openid_connect_provider: true,
       })}>Logout
       </button>
-      {user && hello.status === 'ok' && hello.data.findUsers.length > 0 && (
+      {user && (<button onClick={async () => {
+        await deleteOrganization({ input: { id: 18 } })
+      }}>Delete Org
+      </button>)}
+      {user && (<button onClick={async () => {
+        await createOrganization({ input: { id: 20, name: '111111', description: '22222' }})
+      }}>Create Org
+      </button>)}
+
+      {deleteResult.status === 'error' && (
         <div>
-          <h1>Hello WunderGraph! {user.user_id}</h1>
-          {hello.data.findUsers.map(message => {
-            return (<div key={message.id}>
-              <p>
-                id: {message.id}, email: {message.email}, name: {message.username}
-              </p>
-            </div>)
-          })}
+          <h1> delete error: {deleteResult.errors[0].message} </h1>
         </div>
       )}
-      {user && hello.status === 'error' && (
+      {createResult.status === 'error' && (
         <div>
-          {hello.errors.map(value => {
-            return (<div key={value.message}>
-              <p>
-                message: {value.message}, path: {value.path}
-              </p>
-
-            </div>)
-          })}
+          <h1> create error: {createResult.errors[0].message} </h1>
+        </div>
+      )}
+      {user && me.status === 'ok' && (
+        <div>
+          <h1> firstName: {me.data.user?.firstName} </h1>
+          <h1> lastName: {me.data.user?.lastName} </h1>
+        </div>
+      )}
+      {user && me.status === 'error' && (
+        <div>
+          <h1> error: {me.errors[0].message} </h1>
         </div>
       )}
       {!user && (
