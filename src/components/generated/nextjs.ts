@@ -19,19 +19,29 @@ import type {
 	listUserResponse,
 	listUserInput,
 	listUserResponseData,
-	createOrganizationResponse,
-	createOrganizationInput,
-	createOrganizationResponseData,
-	deleteOrganizationResponse,
-	deleteOrganizationInput,
-	deleteOrganizationResponseData,
-	listOrganizationResponse,
-	listOrganizationResponseData,
-	updateOrganizationResponse,
-	updateOrganizationInput,
-	updateOrganizationResponseData,
+	updateUserResponse,
+	updateUserInput,
+	updateUserResponseData,
+	createShopResponse,
+	createShopInput,
+	createShopResponseData,
+	deleteShopResponse,
+	deleteShopInput,
+	deleteShopResponseData,
+	getShopResponse,
+	getShopInput,
+	getShopResponseData,
+	listShopResponse,
+	listShopInput,
+	listShopResponseData,
+	updateShopResponse,
+	updateShopInput,
+	updateShopResponseData,
 	meResponse,
 	meResponseData,
+	updateProfileResponse,
+	updateProfileInput,
+	updateProfileResponseData,
 } from "./models";
 import { createContext } from "react";
 import {
@@ -59,7 +69,7 @@ const defaultWunderGraphContextProperties: WunderGraphContextProperties<Role> = 
 	ssrCache: {},
 	client: null,
 	clientConfig: {
-		applicationHash: "f922f6e3",
+		applicationHash: "b620caeb",
 		applicationPath: "app/main",
 		baseURL: "http://localhost:9991",
 		sdkVersion: "0.93.0",
@@ -99,10 +109,16 @@ export const useQuery = {
 			operationName: "listUser",
 			requiresAuthentication: true,
 		})(args),
-	listOrganization: hooks.useQueryWithoutInput<listOrganizationResponseData, Role>(WunderGraphContext, {
-		operationName: "listOrganization",
-		requiresAuthentication: true,
-	}),
+	getShop: (args: QueryArgsWithInput<getShopInput>) =>
+		hooks.useQueryWithInput<getShopInput, getShopResponseData, Role>(WunderGraphContext, {
+			operationName: "getShop",
+			requiresAuthentication: true,
+		})(args),
+	listShop: (args: QueryArgsWithInput<listShopInput>) =>
+		hooks.useQueryWithInput<listShopInput, listShopResponseData, Role>(WunderGraphContext, {
+			operationName: "listShop",
+			requiresAuthentication: true,
+		})(args),
 	me: hooks.useQueryWithoutInput<meResponseData, Role>(WunderGraphContext, {
 		operationName: "me",
 		requiresAuthentication: true,
@@ -125,19 +141,29 @@ export const useMutation = {
 			operationName: "deleteUser",
 			requiresAuthentication: true,
 		}),
-	createOrganization: () =>
-		hooks.useMutationWithInput<createOrganizationInput, createOrganizationResponseData, Role>(WunderGraphContext, {
-			operationName: "createOrganization",
+	updateUser: () =>
+		hooks.useMutationWithInput<updateUserInput, updateUserResponseData, Role>(WunderGraphContext, {
+			operationName: "updateUser",
 			requiresAuthentication: true,
 		}),
-	deleteOrganization: () =>
-		hooks.useMutationWithInput<deleteOrganizationInput, deleteOrganizationResponseData, Role>(WunderGraphContext, {
-			operationName: "deleteOrganization",
+	createShop: () =>
+		hooks.useMutationWithInput<createShopInput, createShopResponseData, Role>(WunderGraphContext, {
+			operationName: "createShop",
 			requiresAuthentication: true,
 		}),
-	updateOrganization: () =>
-		hooks.useMutationWithInput<updateOrganizationInput, updateOrganizationResponseData, Role>(WunderGraphContext, {
-			operationName: "updateOrganization",
+	deleteShop: () =>
+		hooks.useMutationWithInput<deleteShopInput, deleteShopResponseData, Role>(WunderGraphContext, {
+			operationName: "deleteShop",
+			requiresAuthentication: true,
+		}),
+	updateShop: () =>
+		hooks.useMutationWithInput<updateShopInput, updateShopResponseData, Role>(WunderGraphContext, {
+			operationName: "updateShop",
+			requiresAuthentication: true,
+		}),
+	updateProfile: () =>
+		hooks.useMutationWithInput<updateProfileInput, updateProfileResponseData, Role>(WunderGraphContext, {
+			operationName: "updateProfile",
 			requiresAuthentication: true,
 		}),
 };
@@ -163,9 +189,15 @@ export const useLiveQuery = {
 			isLiveQuery: true,
 			requiresAuthentication: true,
 		})(args),
-	listOrganization: (args?: SubscriptionArgs) =>
-		hooks.useSubscriptionWithoutInput<listOrganizationResponseData, Role>(WunderGraphContext, {
-			operationName: "listOrganization",
+	getShop: (args: SubscriptionArgsWithInput<getShopInput>) =>
+		hooks.useSubscriptionWithInput<getShopInput, getShopResponseData, Role>(WunderGraphContext, {
+			operationName: "getShop",
+			isLiveQuery: true,
+			requiresAuthentication: true,
+		})(args),
+	listShop: (args: SubscriptionArgsWithInput<listShopInput>) =>
+		hooks.useSubscriptionWithInput<listShopInput, listShopResponseData, Role>(WunderGraphContext, {
+			operationName: "listShop",
 			isLiveQuery: true,
 			requiresAuthentication: true,
 		})(args),
