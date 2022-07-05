@@ -7,7 +7,7 @@ const Loading = () => {
   return (
     <Wrapper>
       <div css={styles.content}>
-        <Loader />
+        <Loader active />
       </div>
     </Wrapper>
   )

@@ -38,7 +38,9 @@ const Home: NextPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   store => async ctx => {
-    const client = new Client()
+    const client = new Client({
+      baseURL: process.env.BASE_URL,
+    })
     const cookieHeader = ctx.req?.headers.cookie
     if (typeof cookieHeader === 'string') {
       client.setExtraHeaders({
