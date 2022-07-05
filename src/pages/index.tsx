@@ -1,10 +1,9 @@
-import React from 'react'
 import type { NextPage } from 'next'
 import AuthGuard from '../components/auth/auth-guard'
 import { Wrapper } from '../components/commons/wrapper'
 import { useWunderGraph } from '../components/generated/nextjs'
 import Head from 'next/head'
-import { Button } from 'antd'
+import { Button } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUser, setUser } from '../app/store/slices/profile'
 import { Client } from '../components/generated/wundergraph.client'
@@ -23,7 +22,7 @@ const Home: NextPage = () => {
       <Wrapper>
         <h1>Logged as: {user?.email}</h1>
         <Button
-          type={'primary'}
+          primary
           danger
           onClick={() =>
             logout({

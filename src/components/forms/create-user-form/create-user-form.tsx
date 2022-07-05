@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useMutation } from '../../generated/nextjs'
 import jsonSchema from '../../generated/jsonschema'
-import Form from '@rjsf/antd'
+import Form from '@rjsf/semantic-ui'
 import { createUserInput } from '../../generated/models'
-import { Button } from 'antd'
+import { Button } from 'semantic-ui-react'
 import FormAttribute from '../../commons/form-attribute'
 
 const CreateUserForm: React.FC<FormAttribute> = ({
@@ -46,10 +46,7 @@ const CreateUserForm: React.FC<FormAttribute> = ({
           await mutate({ input: e.formData })
           setFormData(undefined)
         }}>
-        <Button type={'primary'} htmlType={'submit'}>
-          {' '}
-          {submitText ? submitText : 'Submit'}
-        </Button>
+        <Button type={'submit'}> {submitText ? submitText : 'Submit'}</Button>
       </Form>
     </div>
   )

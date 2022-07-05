@@ -1,4 +1,4 @@
-import { Spin } from 'antd'
+import { Loader } from 'semantic-ui-react'
 import { loadingStyles } from './loading.styles'
 import Wrapper from '../wrapper/wrapper'
 
@@ -7,7 +7,7 @@ const Loading = () => {
   return (
     <Wrapper>
       <div css={styles.content}>
-        <Spin />
+        <Loader />
       </div>
     </Wrapper>
   )

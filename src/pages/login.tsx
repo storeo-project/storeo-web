@@ -1,11 +1,11 @@
+import { useEffect } from 'react'
 import { NextPage } from 'next'
 import { AuthProviders, useWunderGraph } from '../components/generated/nextjs'
 import Head from 'next/head'
 import { Wrapper } from '../components/commons/wrapper'
 import { useAuth } from '../components/auth/auth-provider'
-import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { Button } from 'antd'
+import { Button } from 'semantic-ui-react'
 import { Loading } from '../components/commons/loading'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../app/store/slices/profile'
@@ -35,7 +35,7 @@ const Login: NextPage = () => {
           <title>PMS Login</title>
         </Head>
         <Wrapper>
-          <Button type={'primary'} onClick={() => login(AuthProviders.storeo)}>
+          <Button primary onClick={() => login(AuthProviders.storeo)}>
             Login
           </Button>
         </Wrapper>
