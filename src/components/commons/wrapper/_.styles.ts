@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 
-export const wrapperStyles = () => ({
+export const _styles = () => ({
   content: css`
     display: flex;
     flex-direction: column;

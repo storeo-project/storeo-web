@@ -1,7 +1,7 @@
-import { wrapperStyles } from './wrapper.styles'
+import { _styles } from './_.styles'
 
 const Wrapper = ({ children }) => {
-  const styles = wrapperStyles()
+  const styles = _styles()
 
   return <div css={styles.content}>{children}</div>
 }

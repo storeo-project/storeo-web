@@ -1,4 +1,4 @@
-import CreateUserForm from './create-user-form'
+import CreateUserForm from './index'
 
 export default {
   title: 'Components/Forms/CreateUserForm',

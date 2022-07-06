@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import AuthGuard from '../components/auth/auth-guard'
-import { Wrapper } from '../components/commons/wrapper'
+import { Wrapper } from '../components/commons'
 import { useWunderGraph } from '../components/generated/nextjs'
 import Head from 'next/head'
 import { Button } from 'semantic-ui-react'

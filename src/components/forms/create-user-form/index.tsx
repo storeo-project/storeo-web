@@ -4,7 +4,7 @@ import jsonSchema from '../../generated/jsonschema'
 import Form from '@rjsf/semantic-ui'
 import { createUserInput } from '../../generated/models'
 import { Button } from 'semantic-ui-react'
-import FormAttribute from '../../commons/form-attribute'
+import FormAttribute from '../../types/form-attribute'
 
 const CreateUserForm: React.FC<FormAttribute> = ({
   onResponse,
