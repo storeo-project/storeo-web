@@ -65,7 +65,7 @@ export class Client {
 	private customFetch?: (input: RequestInfo, init?: RequestInit) => Promise<globalThis.Response>;
 	private extraHeaders?: Headers;
 	private readonly baseURL: string = "http://localhost:9991";
-	private readonly applicationHash: string = "f9015c52";
+	private readonly applicationHash: string = "05e29990";
 	private readonly applicationPath: string = "app/main";
 	private readonly sdkVersion: string = "0.94.4";
 	private csrfToken: string | undefined;

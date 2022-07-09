@@ -86,7 +86,7 @@ const jsonSchema: Schema = {
 						"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\u0001-\b\u000b\f\u000e-\u001f!#-[]-]|\\\\[\u0001-\t\u000b\f\u000e-])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\u0001-\b\u000b\f\u000e-\u001f!-ZS-]|\\\\[\u0001-\t\u000b\f\u000e-])+)\\])",
 				},
 				firstName: { type: "string", title: "First Name" },
-				lastName: { type: "string" },
+				lastName: { type: "string", title: "Last Name" },
 			},
 			additionalProperties: false,
 			definitions: {},
