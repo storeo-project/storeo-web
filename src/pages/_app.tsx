@@ -4,12 +4,16 @@ import { AuthProvider } from '../components/auth/auth-provider'
 import { withWunderGraph } from '../components/generated/nextjs'
 import 'semantic-ui-css/semantic.min.css'
 import { wrapper } from '../app/store'
+import theme from '../app/theme'
+import { ThemeProvider } from '@emotion/react'
 
-function PmsApp({ Component, pageProps }: AppProps) {
+function PmsApp({Component, pageProps}: AppProps) {
   return (
-    <AuthProvider>
-      <Component {...pageProps} />
-    </AuthProvider>
+    <ThemeProvider theme={theme}>
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 

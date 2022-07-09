@@ -1,12 +1,12 @@
 import { useAuth } from './auth-provider'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Loading from '../commons/loading/loading'
+import { Loading } from '../commons'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../app/store/slices/profile'
 
-const AuthGuard = ({ children }) => {
-  const { setRedirect } = useAuth()
+const AuthGuard = ({children}) => {
+  const {setRedirect} = useAuth()
   const user = useSelector(selectUser)
   const router = useRouter()
 
@@ -21,7 +21,7 @@ const AuthGuard = ({ children }) => {
   if (user) {
     return <>{children}</>
   } else {
-    return <Loading />
+    return <Loading/>
   }
 }
 

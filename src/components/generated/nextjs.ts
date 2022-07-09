@@ -63,18 +63,16 @@ export const AuthProviders = {
 	storeo: AuthProvider.storeo,
 };
 
-export enum S3Provider {
-	"pms" = "pms",
-}
+export enum S3Provider {}
 
 const defaultWunderGraphContextProperties: WunderGraphContextProperties<Role> = {
 	ssrCache: {},
 	client: null,
 	clientConfig: {
-		applicationHash: "a7af17c0",
+		applicationHash: "f9015c52",
 		applicationPath: "app/main",
 		baseURL: "http://localhost:9991",
-		sdkVersion: "0.94.3",
+		sdkVersion: "0.94.4",
 		authenticationEnabled: true,
 	},
 	user: null,

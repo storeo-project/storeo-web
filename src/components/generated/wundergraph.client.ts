@@ -32,22 +32,8 @@ import type {
 import type { RequestOptions, ClientConfig, UserListener, Response, FetchConfig, Headers } from "@wundergraph/sdk";
 import type { User } from "./wundergraph.server";
 
-export const WUNDERGRAPH_S3_ENABLED = true;
+export const WUNDERGRAPH_S3_ENABLED = false;
 export const WUNDERGRAPH_AUTH_ENABLED = true;
-
-export interface UploadResponse {
-	key: string;
-}
-
-export interface UploadConfig {
-	provider: S3Provider;
-	formData: FormData;
-	abortSignal?: AbortSignal;
-}
-
-export enum S3Provider {
-	"pms" = "pms",
-}
 
 export enum AuthProviderId {
 	"storeo" = "storeo",
@@ -79,9 +65,9 @@ export class Client {
 	private customFetch?: (input: RequestInfo, init?: RequestInit) => Promise<globalThis.Response>;
 	private extraHeaders?: Headers;
 	private readonly baseURL: string = "http://localhost:9991";
-	private readonly applicationHash: string = "a7af17c0";
+	private readonly applicationHash: string = "f9015c52";
 	private readonly applicationPath: string = "app/main";
-	private readonly sdkVersion: string = "0.94.3";
+	private readonly sdkVersion: string = "0.94.4";
 	private csrfToken: string | undefined;
 	private user: User | null;
 	private userListener: UserListener<User> | undefined;
@@ -307,66 +293,6 @@ export class Client {
 		},
 	};
 
-	public uploadFiles = async (config: UploadConfig): Promise<Response<UploadResponse[]>> => {
-		try {
-			// pass only files
-			config.formData.forEach((value, key) => {
-				if (!(value instanceof Blob)) {
-					delete config.formData[key];
-				}
-			});
-			const baseHeaders: Headers = {
-				...this.extraHeaders,
-				"WG-SDK-Version": this.sdkVersion,
-			};
-			const params = this.queryString({
-				wg_api_hash: this.applicationHash,
-			});
-			if (this.csrfToken === undefined) {
-				const f = this.customFetch || fetch;
-				const res = await f(this.baseURL + "/" + this.applicationPath + "/auth/cookie/csrf", {
-					headers: {
-						...baseHeaders,
-						Accept: "text/plain",
-					},
-					credentials: "include",
-					mode: "cors",
-				});
-				this.csrfToken = await res.text();
-			}
-			const headers: Headers = {
-				...baseHeaders,
-				Accept: "application/json",
-				"WG-SDK-Version": this.sdkVersion,
-			};
-			if (this.csrfToken) {
-				headers["X-CSRF-Token"] = this.csrfToken;
-			}
-			const body = config.formData;
-			const f = this.customFetch || fetch;
-			const res = await f(this.baseURL + "/" + this.applicationPath + "/s3/" + config.provider + "/upload" + params, {
-				headers,
-				body,
-				method: "POST",
-				signal: config.abortSignal,
-				credentials: "include",
-				mode: "cors",
-			});
-			if (res.status === 200) {
-				const json = await res.json();
-				return {
-					status: "ok",
-					body: json,
-				};
-			}
-			throw new Error(`could not upload files, status: ${res.status}`);
-		} catch (e: any) {
-			return {
-				status: "error",
-				message: e.toString(),
-			};
-		}
-	};
 	private doFetch = async <T>(fetchConfig: FetchConfig): Promise<Response<T>> => {
 		try {
 			const params =

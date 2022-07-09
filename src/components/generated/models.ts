@@ -2,20 +2,20 @@
 
 export interface createUserInput {
 	email: string;
-	firstName?: string;
-	lastName?: string;
+	firstName: string;
+	lastName: string;
 }
 
 export interface deleteMultiUserInput {
-	ids: number[];
+	ids: string[];
 }
 
 export interface deleteUserInput {
-	id: number;
+	id: string;
 }
 
 export interface getUserInput {
-	id: number;
+	id: string;
 }
 
 export interface getUserByEmailInput {
@@ -28,7 +28,7 @@ export interface listUserInput {
 }
 
 export interface updateUserInput {
-	id: number;
+	id: string;
 	data: db_userUpdateInput;
 }
 
@@ -37,8 +37,8 @@ export interface checkUserInput {
 }
 
 export interface getShopUserInput {
-	shopId: number;
-	userId: number;
+	shopId: string;
+	userId: string;
 	role?: string;
 }
 
@@ -54,11 +54,11 @@ export interface createShopInput {
 }
 
 export interface deleteShopInput {
-	id: number;
+	id: string;
 }
 
 export interface getShopInput {
-	id: number;
+	id: string;
 }
 
 export interface listShopInput {
@@ -67,7 +67,7 @@ export interface listShopInput {
 }
 
 export interface updateShopInput {
-	id: number;
+	id: string;
 	name: string;
 	description: string;
 }
@@ -81,20 +81,20 @@ export interface updateProfileInput {
 
 export interface InternalcreateUserInput {
 	email: string;
-	firstName?: string;
-	lastName?: string;
+	firstName: string;
+	lastName: string;
 }
 
 export interface InternaldeleteMultiUserInput {
-	ids: number[];
+	ids: string[];
 }
 
 export interface InternaldeleteUserInput {
-	id: number;
+	id: string;
 }
 
 export interface InternalgetUserInput {
-	id: number;
+	id: string;
 }
 
 export interface InternalgetUserByEmailInput {
@@ -107,7 +107,7 @@ export interface InternallistUserInput {
 }
 
 export interface InternalupdateUserInput {
-	id: number;
+	id: string;
 	data: db_userUpdateInput;
 }
 
@@ -116,8 +116,8 @@ export interface InternalcheckUserInput {
 }
 
 export interface InternalgetShopUserInput {
-	shopId: number;
-	userId: number;
+	shopId: string;
+	userId: string;
 	role?: string;
 }
 
@@ -134,12 +134,12 @@ export interface InternalcreateShopInput {
 }
 
 export interface InternaldeleteShopInput {
-	id: number;
+	id: string;
 	updatedBy: string;
 }
 
 export interface InternalgetShopInput {
-	id: number;
+	id: string;
 }
 
 export interface InternallistShopInput {
@@ -149,7 +149,7 @@ export interface InternallistShopInput {
 }
 
 export interface InternalupdateShopInput {
-	id: number;
+	id: string;
 	name: string;
 	description: string;
 	updatedBy: string;
@@ -169,20 +169,20 @@ export interface InternalupdateProfileInput {
 
 export interface InjectedcreateUserInput {
 	email: string;
-	firstName?: string;
-	lastName?: string;
+	firstName: string;
+	lastName: string;
 }
 
 export interface InjecteddeleteMultiUserInput {
-	ids: number[];
+	ids: string[];
 }
 
 export interface InjecteddeleteUserInput {
-	id: number;
+	id: string;
 }
 
 export interface InjectedgetUserInput {
-	id: number;
+	id: string;
 }
 
 export interface InjectedgetUserByEmailInput {
@@ -195,7 +195,7 @@ export interface InjectedlistUserInput {
 }
 
 export interface InjectedupdateUserInput {
-	id: number;
+	id: string;
 	data: db_userUpdateInput;
 }
 
@@ -204,8 +204,8 @@ export interface InjectedcheckUserInput {
 }
 
 export interface InjectedgetShopUserInput {
-	shopId: number;
-	userId: number;
+	shopId: string;
+	userId: string;
 	role?: string;
 }
 
@@ -223,13 +223,13 @@ export interface InjectedcreateShopInput {
 }
 
 export interface InjecteddeleteShopInput {
-	id: number;
+	id: string;
 	updatedBy: string;
 	updatedAt: string;
 }
 
 export interface InjectedgetShopInput {
-	id: number;
+	id: string;
 }
 
 export interface InjectedlistShopInput {
@@ -239,7 +239,7 @@ export interface InjectedlistShopInput {
 }
 
 export interface InjectedupdateShopInput {
-	id: number;
+	id: string;
 	name: string;
 	description: string;
 	updatedBy: string;
@@ -345,7 +345,7 @@ export interface updateProfileResponse {
 
 export interface createUserResponseData {
 	user?: {
-		id: number;
+		id: string;
 	};
 }
 
@@ -357,13 +357,13 @@ export interface deleteMultiUserResponseData {
 
 export interface deleteUserResponseData {
 	user?: {
-		id: number;
+		id: string;
 	};
 }
 
 export interface getUserResponseData {
 	user?: {
-		id: number;
+		id: string;
 		email: string;
 		phoneNumber: string;
 		firstName: string;
@@ -378,7 +378,7 @@ export interface getUserResponseData {
 
 export interface getUserByEmailResponseData {
 	user?: {
-		id: number;
+		id: string;
 		email: string;
 		phoneNumber: string;
 		firstName: string;
@@ -393,7 +393,7 @@ export interface getUserByEmailResponseData {
 
 export interface listUserResponseData {
 	users: {
-		id: number;
+		id: string;
 		email: string;
 		phoneNumber: string;
 		firstName: string;
@@ -408,33 +408,33 @@ export interface listUserResponseData {
 
 export interface updateUserResponseData {
 	user?: {
-		id: number;
+		id: string;
 	};
 }
 
 export interface checkUserResponseData {
 	user?: {
-		id: number;
+		id: string;
 	};
 }
 
 export interface getShopUserResponseData {
 	value?: {
 		shop: {
-			id: number;
+			id: string;
 		};
 	};
 }
 
 export interface registerUserResponseData {
 	user?: {
-		id: number;
+		id: string;
 	};
 }
 
 export interface createShopResponseData {
 	shop?: {
-		id: number;
+		id: string;
 		name: string;
 		description: string;
 	};
@@ -442,13 +442,13 @@ export interface createShopResponseData {
 
 export interface deleteShopResponseData {
 	shop?: {
-		id: number;
+		id: string;
 	};
 }
 
 export interface getShopResponseData {
 	shop?: {
-		id: number;
+		id: string;
 		name: string;
 		description: string;
 		createdBy: string;
@@ -460,7 +460,7 @@ export interface getShopResponseData {
 
 export interface listShopResponseData {
 	items: {
-		id: number;
+		id: string;
 		name: string;
 		description: string;
 	}[];
@@ -468,13 +468,13 @@ export interface listShopResponseData {
 
 export interface updateShopResponseData {
 	shop?: {
-		id: number;
+		id: string;
 	};
 }
 
 export interface meResponseData {
 	user?: {
-		id: number;
+		id: string;
 		email: string;
 		phoneNumber: string;
 		firstName: string;
@@ -485,7 +485,7 @@ export interface meResponseData {
 
 export interface updateProfileResponseData {
 	user?: {
-		id: number;
+		id: string;
 		firstName: string;
 		lastName: string;
 		phoneNumber: string;
@@ -494,6 +494,7 @@ export interface updateProfileResponseData {
 }
 
 export interface db_userUpdateInput {
+	id?: db_StringFieldUpdateOperationsInput;
 	email?: db_StringFieldUpdateOperationsInput;
 	phoneNumber?: db_StringFieldUpdateOperationsInput;
 	firstName?: db_StringFieldUpdateOperationsInput;
@@ -534,6 +535,7 @@ export interface db_shopCreateNestedOneWithoutShop_userInput {
 }
 
 export interface db_shopCreateWithoutShop_userInput {
+	id?: string;
 	name?: string;
 	description?: string;
 	deleted?: boolean;
@@ -549,7 +551,7 @@ export interface db_shopCreateOrConnectWithoutShop_userInput {
 }
 
 export interface db_shopWhereUniqueInput {
-	id?: number;
+	id?: string;
 }
 
 export interface db_shop_userCreateOrConnectWithoutUserInput {
@@ -562,8 +564,8 @@ export interface db_shop_userWhereUniqueInput {
 }
 
 export interface db_shop_userUser_idShop_idCompoundUniqueInput {
-	user_id?: number;
-	shop_id?: number;
+	user_id?: string;
+	shop_id?: string;
 }
 
 export interface db_shop_userUpsertWithWhereUniqueWithoutUserInput {
@@ -597,6 +599,7 @@ export interface db_shopUpsertWithoutShop_userInput {
 }
 
 export interface db_shopUpdateWithoutShop_userInput {
+	id?: db_StringFieldUpdateOperationsInput;
 	name?: db_StringFieldUpdateOperationsInput;
 	description?: db_StringFieldUpdateOperationsInput;
 	deleted?: db_BoolFieldUpdateOperationsInput;
@@ -616,7 +619,7 @@ export interface db_shop_userCreateManyUserInputEnvelope {
 }
 
 export interface db_shop_userCreateManyUserInput {
-	shop_id?: number;
+	shop_id?: string;
 	assigned_at?: string;
 	assigned_by?: string;
 	shop_role?: string;
@@ -636,55 +639,11 @@ export interface db_shop_userScalarWhereInput {
 	AND?: db_shop_userScalarWhereInput;
 	OR?: db_shop_userScalarWhereInput[];
 	NOT?: db_shop_userScalarWhereInput;
-	user_id?: db_IntFilter;
-	shop_id?: db_IntFilter;
+	user_id?: db_StringFilter;
+	shop_id?: db_StringFilter;
 	assigned_at?: db_DateTimeFilter;
 	assigned_by?: db_StringFilter;
 	shop_role?: db_StringFilter;
-}
-
-export interface db_IntFilter {
-	equals?: number;
-	in?: number[];
-	notIn?: number[];
-	lt?: number;
-	lte?: number;
-	gt?: number;
-	gte?: number;
-	not?: db_NestedIntFilter;
-}
-
-export interface db_NestedIntFilter {
-	equals?: number;
-	in?: number[];
-	notIn?: number[];
-	lt?: number;
-	lte?: number;
-	gt?: number;
-	gte?: number;
-	not?: db_NestedIntFilter;
-}
-
-export interface db_DateTimeFilter {
-	equals?: string;
-	in?: string[];
-	notIn?: string[];
-	lt?: string;
-	lte?: string;
-	gt?: string;
-	gte?: string;
-	not?: db_NestedDateTimeFilter;
-}
-
-export interface db_NestedDateTimeFilter {
-	equals?: string;
-	in?: string[];
-	notIn?: string[];
-	lt?: string;
-	lte?: string;
-	gt?: string;
-	gte?: string;
-	not?: db_NestedDateTimeFilter;
 }
 
 export interface db_StringFilter {
@@ -714,6 +673,28 @@ export interface db_NestedStringFilter {
 	startsWith?: string;
 	endsWith?: string;
 	not?: db_NestedStringFilter;
+}
+
+export interface db_DateTimeFilter {
+	equals?: string;
+	in?: string[];
+	notIn?: string[];
+	lt?: string;
+	lte?: string;
+	gt?: string;
+	gte?: string;
+	not?: db_NestedDateTimeFilter;
+}
+
+export interface db_NestedDateTimeFilter {
+	equals?: string;
+	in?: string[];
+	notIn?: string[];
+	lt?: string;
+	lte?: string;
+	gt?: string;
+	gte?: string;
+	not?: db_NestedDateTimeFilter;
 }
 
 export interface db_shop_userUpdateManyMutationInput {
